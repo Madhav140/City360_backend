@@ -25,7 +25,8 @@ router.post('/worker/register',multerConfig.any([{name:'photo',maxCount:1},{name
 router.post('/worker/login',workerController.workerLogin)
 router.put('/worker/update/:id',jwtConfig,multerConfig.single('photo'),workerController.editWorker)
 router.get('/worker/bookedusers',jwtConfig,userController.getBookedusers)
-router.put('/worker/approve/:id',jwtConfig,Bookingcontroller.bookingstatus)
+router.put('/worker/approvetrue/:id',jwtConfig,Bookingcontroller.bookingtrue)
+router.put('/worker/approvefalse/:id',jwtConfig,Bookingcontroller.bookingfalse)
 
 
 

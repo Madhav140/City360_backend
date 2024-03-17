@@ -46,23 +46,28 @@ exports.deleteReview = async(req,res)=>{
 
 
 
-exports.bookingstatus = async(req,res)=>{
-  const {id} = req.params
-  if({truestatus} = req.body){
-    var stat = true
-  }
-  
-   if({falsestatus}  = req.body){
-    var stat = false
-  }
- 
+
+
+exports.bookingtrue = async(req,res)=>{
+    const {id} = req.params
     try {
-        const trueworkers = await bookings.updateOne({_id:id},{$set:{status:stat}})
-        res.status(200).json(trueworkers)
-       } catch (err) {
-        res.status(401).json(`Request failed due to ${err}`)
-       }
-}
+     const trueBook = await bookings.updateOne({_id:id},{$set:{status:true}})
+     res.status(200).json(trueBook)
+    } catch (err) {
+     res.status(401).json(`Request failed due to ${err}`)
+    }
+ }
+
+
+ exports.bookingfalse = async(req,res)=>{
+    const {id} = req.params
+    try {
+     const falseBook = await bookings.updateOne({_id:id},{$set:{status:false}})
+     res.status(200).json(falseBook)
+    } catch (err) {
+     res.status(401).json(`Request failed due to ${err}`)
+    }
+ }
 
 
 
